@@ -1,0 +1,26 @@
+{
+   "name": "Zokou Qr",
+  "version": "1.0.0",
+  "description": "Connect Whatsapp With Baileys Code Qr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+},
+  "keywords": [
+    "baileys",
+    "code-pairing"
+  ],
+  "author": "Monkey D Luffy",
+  "license": "ISC",
+  "dependencies": {
+    "@sampandey001/baileys": "^6.3.0",
+    "axios": "^1.6.4",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.2.0",
+    "path": "^0.12.7",
+    "pino": "^8.17.2",
+    "qrcode": "^1.5.3"
+  }
+}
